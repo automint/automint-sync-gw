@@ -1,0 +1,30 @@
+{
+    "log":["CRUD+", "REST+", "Changes+", "Attach+"],
+    "SSLCert": "ssl/cert.cer",
+    "SSLKey": "ssl/priv.pem",
+    "adminInterface": "0.0.0.0:4985",
+    "interface": "0.0.0.0:4984",
+    "databases": {
+        "automint-sgw-cloud": {
+            "server":"http://cbs.server:8091",
+            "bucket":"automint-cbs-cloud",
+            "sync":`
+                function (doc) {   
+                    requireAccess(doc.channel);           
+                    channel (doc.channel);
+                }
+            `,
+            "users": {
+                "GUEST": {
+                    "disabled": true
+                }
+            }
+        }
+    },
+    "CORS": {
+        "Origin": ["http://cbs.vrl:9000"],
+        "LoginOrigin": ["http://cbs.vrl:9000"],
+        "Headers": ["Content-Type","Authorization"],
+        "MaxAge": 17280000
+    }
+}
