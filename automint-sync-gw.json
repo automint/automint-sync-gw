@@ -19,6 +19,21 @@
                     "disabled": true
                 }
             }
+        },
+        "nd-sgw-cloud": {
+            "server":"http://cbs.server:8091",
+            "bucket":"nd-cbs-cloud",
+            "sync":`
+                function (doc) {   
+                    requireAccess(doc.channel);           
+                    channel (doc.channel);
+                }
+            `,
+            "users": {
+                "GUEST": {
+                    "disabled": true
+                }
+            }
         }
     },
     "CORS": {
