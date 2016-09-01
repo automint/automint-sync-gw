@@ -1,5 +1,7 @@
 {
     "log":["CRUD+", "REST+", "Changes+", "Attach+"],
+    "SSLCert": "ssl/cert.cer",
+    "SSLKey": "ssl/priv.pem",
     "adminInterface": "0.0.0.0:4985",
     "interface": "0.0.0.0:4984",
     "databases": {
