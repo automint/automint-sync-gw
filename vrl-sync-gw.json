@@ -1,0 +1,30 @@
+{
+    "log":["HTTP+"],
+    "SSLCert": "ssl/cert.cer",
+    "SSLKey": "ssl/priv.pem",
+    "adminInterface": "0.0.0.0:4985",
+    "interface": "0.0.0.0:4984",
+    "databases": {
+        "vrl-sgw-cloud": {
+            "server":"http://cbs.server:8091",
+            "bucket":"vrl-cbs-cloud",
+            "sync":`
+                function (doc) {   
+                    requireAccess(doc.channel);           
+                    channel (doc.channel);
+                }
+            `,
+            "users": {
+                "GUEST": {
+                    "disabled": true
+                }
+            }
+        }
+    },
+    "CORS": {
+        "Origin": ["*"],
+        "LoginOrigin": ["*"],
+        "Headers": ["Content-Type","Authorization"],
+        "MaxAge": 17280000
+    }
+}
